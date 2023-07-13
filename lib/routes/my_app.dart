@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/routes/home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -6,8 +7,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (const MaterialApp(
-      title: 'hello world',
-      home: Scaffold(),
-    ));
+        debugShowCheckedModeBanner: false,
+        title: 'flutter project01',
+        home: Home()));
   }
 }
