@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/routes/home.dart';
+import 'package:flutter_application_1/routes/screen_functions.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,6 +10,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.lightBlue),
         debugShowCheckedModeBanner: false,
         title: 'flutter project01',
-        home: const CounterScreen()));
+        home: const FunctionsScreen()));
   }
 }
