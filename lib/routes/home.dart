@@ -1,24 +1,43 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  int _counter = 1;
+
+  incremet() {
+    setState(() {
+      ++_counter;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlue[300],
+          title: const Text(
+            'Flutter Counter',
+            textAlign: TextAlign.center,
+          ),
+        ),
         floatingActionButton: FloatingActionButton(
-            onPressed: () => print('hello'), child: const Icon(Icons.plus_one)),
-        body: const Center(
+            onPressed: incremet, child: const Icon(Icons.plus_one)),
+        body: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlutterLogo(),
+                const FlutterLogo(size: 100),
                 Text(
-                  "Hot reload!!",
-                  style: TextStyle(fontSize: 20),
+                  "$_counter",
+                  style: const TextStyle(fontSize: 120),
                 ),
-                Icon(Icons.sentiment_very_satisfied),
+                Text(_counter == 1 ? "click" : "clicks")
               ]),
         )));
   }
