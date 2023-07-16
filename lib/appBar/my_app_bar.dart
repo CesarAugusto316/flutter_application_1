@@ -8,6 +8,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 4.0,
       leading: const Padding(
         padding: EdgeInsets.all(10.0),
         child: CircleAvatar(
@@ -16,9 +17,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               'https://i.pinimg.com/originals/74/e4/1d/74e41d48eddb609fd83d75ee9cb516e9.jpg'),
         ),
       ),
-      title: const Text('Mi amor'),
+      title: Text('Mi amor',
+          style:
+              TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
       centerTitle: false,
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      backgroundColor: Theme.of(context).colorScheme.primary,
     );
   }
 
