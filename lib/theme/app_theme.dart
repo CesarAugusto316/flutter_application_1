@@ -8,14 +8,15 @@ const List<Color> _colors = [
 ];
 
 class AppTheme {
-  ThemeData theme([int colorIndex = 1]) {
-    assert(colorIndex >= 0 && colorIndex <= (_colors.length - 1),
+  ThemeData theme({int selectColor = 1, Brightness theme = Brightness.light}) {
+    assert(selectColor >= 0 && selectColor <= (_colors.length - 1),
         'Index not allowed');
 
     return ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: _colors[colorIndex],
-        brightness: Brightness.light,
+        colorSchemeSeed: _colors[selectColor],
+        textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 18)),
+        brightness: theme,
         filledButtonTheme: FilledButtonThemeData(
             style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
