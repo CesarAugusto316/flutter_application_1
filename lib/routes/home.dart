@@ -16,6 +16,10 @@ class _CounterScreenState extends State<CounterScreen> {
     });
   }
 
+  myCounter(int x, int y) {
+    return x * y;
+  }
+
   @override
   Widget build(BuildContext context) {
     return (Scaffold(

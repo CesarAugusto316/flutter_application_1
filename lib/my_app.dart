@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/routes/screen_functions.dart';
+import 'package:flutter_application_1/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
+
+  void onPress() {}
 
   @override
   Widget build(BuildContext context) {
-    return (MaterialApp(
-        theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.lightBlue),
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'flutter project01',
-        home: const FunctionsScreen()));
+        theme: AppTheme().theme(0),
+        home: Scaffold(
+          appBar: AppBar(
+            // backgroundColor: Colors.amber[400],
+            centerTitle: true,
+            elevation: 2,
+            title: const Text('YesNo App'),
+          ),
+          body: Center(
+            child: FilledButton(
+                onPressed: onPress,
+                child: Text(
+                  'click me'.toUpperCase(),
+                )),
+          ),
+        ));
   }
 }
