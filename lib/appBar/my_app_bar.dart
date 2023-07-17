@@ -17,7 +17,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               'https://i.pinimg.com/originals/74/e4/1d/74e41d48eddb609fd83d75ee9cb516e9.jpg'),
         ),
       ),
-      title: Text('Mi amor',
+      title: Text('Carlotita',
           style:
               TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
       centerTitle: false,
