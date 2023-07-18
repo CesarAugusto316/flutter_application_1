@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/her_message.dart';
 import 'package:flutter_application_1/shared/message_bubble.dart';
+import 'package:flutter_application_1/shared/message_input.dart';
 
 class ChatView extends StatelessWidget {
   const ChatView({super.key});
@@ -19,6 +20,7 @@ class ChatView extends StatelessWidget {
                     itemBuilder: (context, index) => index % 2 == 0
                         ? MessageBubble(message: index + 1)
                         : HerMessageBubble(message: index * 3))),
+            MessageInput()
           ],
         ),
       ),

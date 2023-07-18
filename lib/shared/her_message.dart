@@ -7,25 +7,22 @@ class HerMessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                margin: const EdgeInsets.only(bottom: 14),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Theme.of(context).colorScheme.tertiaryContainer),
-                child: Text('This is my message $message')),
-            const HerImageBubble(),
-            const SizedBox(height: 14)
-          ],
-        ),
-        // const HerImageBubble()
+        Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            margin: const EdgeInsets.only(bottom: 14),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Theme.of(context).colorScheme.tertiaryContainer),
+            child: Text(
+              'This is my message $message',
+              style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+            )),
+        const HerImageBubble(),
+        const SizedBox(height: 14)
       ],
     );
   }
@@ -41,11 +38,22 @@ class HerImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-          // color: Theme.of(context).colorScheme.tertiary,
-          width: size.width * 0.7,
-          height: 160,
-          fit: BoxFit.cover,
-          'https://www.ovrs.com/blog/wp-content/uploads/2014/12/iStock_000029861698_Medium-1.jpg'),
+        'https://www.ovrs.com/blog/wp-content/uploads/2014/12/iStock_000029861698_Medium-1.jpg',
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
+          return Container(
+              height: 160,
+              width: size.width * 0.7,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Theme.of(context).colorScheme.tertiaryContainer));
+        },
+        width: size.width * 0.7,
+        height: 160,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

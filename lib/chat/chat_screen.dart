@@ -10,6 +10,7 @@ class ChatScreen extends StatelessWidget {
     return const Scaffold(
       appBar: MyAppBar(),
       body: ChatView(),
+      // bottomNavigationBar: MessageInput(),
     );
   }
 }
