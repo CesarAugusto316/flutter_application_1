@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/domain/entities/Message.dart';
+import 'package:flutter_application_1/services/messages_service.dart';
 
 class ChatProvider extends ChangeNotifier {
   final scrollController = ScrollController();
+  final messagesServices = MessagesService.getInstance();
 
   final List<Message> messages = [
     const Message(text: 'hola carlotita', owner: Owner.mine),
@@ -19,6 +21,23 @@ class ChatProvider extends ChangeNotifier {
     notifyListeners();
 
     await Future.delayed(const Duration(milliseconds: 170), _scrollToBottom);
+
+    if (text.endsWith('?')) {
+      try {
+        final res = await messagesServices.getMessage();
+
+        messages.add(Message(
+            text: res.data['answer'],
+            owner: Owner.her,
+            imageUrl: res.data['image']));
+        notifyListeners();
+
+        await Future.delayed(
+            const Duration(milliseconds: 170), _scrollToBottom);
+      } catch (e) {
+        print(e);
+      }
+    }
   }
 
   void _scrollToBottom() {

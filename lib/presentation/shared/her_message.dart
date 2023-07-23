@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HerMessageBubble extends StatelessWidget {
-  final dynamic message;
+  final String message;
+  final String imgUrl;
 
-  const HerMessageBubble({super.key, this.message = ''});
+  const HerMessageBubble({super.key, required this.imgUrl, this.message = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class HerMessageBubble extends StatelessWidget {
               message,
               style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
             )),
-        const HerImageBubble(),
+        HerImageBubble(imgUrl: imgUrl),
         const SizedBox(height: 14)
       ],
     );
@@ -29,7 +30,9 @@ class HerMessageBubble extends StatelessWidget {
 }
 
 class HerImageBubble extends StatelessWidget {
-  const HerImageBubble({super.key});
+  final String imgUrl;
+
+  const HerImageBubble({super.key, required this.imgUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class HerImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        'https://www.ovrs.com/blog/wp-content/uploads/2014/12/iStock_000029861698_Medium-1.jpg',
+        imgUrl,
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) {
             return child;

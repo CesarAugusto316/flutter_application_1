@@ -29,7 +29,11 @@ class ChatView extends StatelessWidget {
                       final message = messagesList[index];
 
                       return ((message.owner.name == Owner.her.name)
-                          ? HerMessageBubble(message: message.text)
+                          ? HerMessageBubble(
+                              message: message.text,
+                              imgUrl: message.imageUrl ??
+                                  'https://www.ovrs.com/blog/wp-content/uploads/2014/12/iStock_000029861698_Medium-1.jpg',
+                            )
                           : MessageBubble(message: message.text));
                     })),
             MessageInput(onSendMessage: sendMessage)
