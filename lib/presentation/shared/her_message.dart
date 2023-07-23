@@ -18,7 +18,7 @@ class HerMessageBubble extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 color: Theme.of(context).colorScheme.tertiaryContainer),
             child: Text(
-              'This is my message $message',
+              message,
               style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
             )),
         const HerImageBubble(),
