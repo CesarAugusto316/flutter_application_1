@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/providers/chat_provider.dart';
-import 'package:provider/provider.dart';
+// import 'package:flutter_application_1/presentation/providers/chat_provider.dart';
+// import 'package:provider/provider.dart';
 
 class MessageInput extends StatelessWidget {
-  MessageInput({super.key});
+  final Future<void> Function(String) onSendMessage;
+
+  MessageInput({super.key, required this.onSendMessage});
 
   final _inputController = TextEditingController();
   final _focusNode = FocusNode();
@@ -13,7 +15,7 @@ class MessageInput extends StatelessWidget {
       borderSide: BorderSide(color: Theme.of(context).colorScheme.primary));
 
   _inputDecoration(BuildContext context) {
-    final sendMessage = context.watch<ChatProvider>().sendMessage;
+    // final sendMessage = context.watch<ChatProvider>().sendMessage;
 
     return InputDecoration(
         filled: true,
@@ -23,31 +25,31 @@ class MessageInput extends StatelessWidget {
         suffixIcon: IconButton(
           icon: const Icon(Icons.send_outlined),
           onPressed: () {
-            sendMessage(_inputController.value.text);
+            onSendMessage(_inputController.value.text);
             _inputController.clear();
-            _focusNode.unfocus();
+            _focusNode.requestFocus();
           },
         ));
   }
 
   @override
   Widget build(BuildContext context) {
-    final sendMessage = context.watch<ChatProvider>().sendMessage;
+    // final sendMessage = context.watch<ChatProvider>().sendMessage;
 
     return Container(
         padding: const EdgeInsets.only(bottom: 20),
         child: TextFormField(
+          decoration: _inputDecoration(context),
           focusNode: _focusNode,
           controller: _inputController,
           onTapOutside: (e) {
             _focusNode.unfocus();
           },
           onFieldSubmitted: (value) {
-            sendMessage(value);
+            onSendMessage(value);
             _inputController.clear();
             _focusNode.requestFocus();
           },
-          decoration: _inputDecoration(context),
         ));
   }
 }

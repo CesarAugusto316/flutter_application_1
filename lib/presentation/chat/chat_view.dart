@@ -12,6 +12,8 @@ class ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final messagesList = context.watch<ChatProvider>().messages;
+    final sendMessage = context.read<ChatProvider>().sendMessage;
+    final scrollController = context.read<ChatProvider>().scrollController;
 
     return SafeArea(
       child: Container(
@@ -20,6 +22,7 @@ class ChatView extends StatelessWidget {
           children: [
             Expanded(
                 child: ListView.builder(
+                    controller: scrollController,
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     itemCount: messagesList.length,
                     itemBuilder: (context, index) {
@@ -29,7 +32,7 @@ class ChatView extends StatelessWidget {
                           ? HerMessageBubble(message: message.text)
                           : MessageBubble(message: message.text));
                     })),
-            MessageInput()
+            MessageInput(onSendMessage: sendMessage)
           ],
         ),
       ),
