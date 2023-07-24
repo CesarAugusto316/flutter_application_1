@@ -1,0 +1,23 @@
+{
+    "_id": "dea16665-20da-4e02-983d-09e492af8056",
+    "colName": "yesNo",
+    "created": "2023-07-24T02:11:01.060Z",
+    "sortNum": 10000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f9527e2d-d76b-4ddc-af7c-0394d586bb8e",
+            "colId": "dea16665-20da-4e02-983d-09e492af8056",
+            "containerId": "",
+            "name": "yesNo",
+            "url": "https://yesno.wtf/api",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-24T02:11:11.689Z",
+            "modified": "2023-07-24T02:11:30.660Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

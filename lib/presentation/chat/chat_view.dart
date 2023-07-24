@@ -12,7 +12,7 @@ class ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final messagesList = context.watch<ChatProvider>().messages;
-    final sendMessage = context.read<ChatProvider>().sendMessage;
+    final handleReply = context.read<ChatProvider>().handleReply;
     final scrollController = context.read<ChatProvider>().scrollController;
 
     return SafeArea(
@@ -36,7 +36,7 @@ class ChatView extends StatelessWidget {
                             )
                           : MessageBubble(message: message.text));
                     })),
-            MessageInput(onSendMessage: sendMessage)
+            MessageInput(onSendMessage: handleReply)
           ],
         ),
       ),

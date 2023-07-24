@@ -1,24 +1,16 @@
-import 'dart:js_interop';
-
 import 'package:dio/dio.dart';
-// import 'package:flutter_application_1/models/http/messsage_res.dart';
+import 'package:flutter_application_1/models/http/messsage_res.dart';
 
 // singleton
-class MessagesService {
-  static late MessagesService instance;
+class _MessagesService {
+  final _http = Dio(BaseOptions(
+      baseUrl: 'https://yesno.wtf', responseType: ResponseType.json));
 
-  static MessagesService getInstance() {
-    if () {
-      instance = MessagesService._();
-    }
-    return instance;
-  }
+  Future<MessageRes> getMessage() async {
+    final res = await _http.get<Map<String, dynamic>>('/api');
 
-  MessagesService._();
-
-  final _http = Dio(BaseOptions(baseUrl: 'https://yesno.wtf'));
-
-  Future getMessage() async {
-    return _http.get('/api');
+    return MessageRes.fromJson(res.data);
   }
 }
+
+final yesNoService = _MessagesService();
